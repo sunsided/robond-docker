@@ -6,6 +6,16 @@ Step into the ROS Kinetic Docker container by running
 ./run-nvidia.sh
 ```
 
+This will open a shell as the `ros` user (password `ros`) and place you into the `/workspace`
+directory. In the background, an SSH server is started that allows you (or your IDE)
+to connect to the Docker container via port `2222`. You can try it out by running
+
+```bash
+ssh ros@127.0.0.1 -p2222
+```
+
+from a different terminal.
+
 Note that `run-nvidia.sh` makes use of the [`sunside/ros-gazebo-gpu:udacity-robond`](https://hub.docker.com/repository/docker/sunside/ros-gazebo-gpu)
 Docker image, because the original `desktop-full` ROS installation (via the [base image](https://github.com/sunsided/ros-gazebo-gpu-docker)) doesn't contain some
 required packages, such as

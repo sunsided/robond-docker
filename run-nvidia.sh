@@ -26,9 +26,14 @@ then
     chmod a+r $XAUTH
 fi
 
+# We add SSH port forwarding, as well as sys_ptrace capability
+# to allow for debugging.
+
 docker run --rm -it \
     --name "$CONTAINER_NAME" \
     --gpus "$GPUS" \
+    --publish 127.0.0.1:2222:22 \
+    --cap-add sys_ptrace \
     --env="DISPLAY" \
     --env="QT_X11_NO_MITSHM=1" \
     --env="XAUTHORITY=$XAUTH_DOCKER" \
