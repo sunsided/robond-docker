@@ -1,4 +1,4 @@
-# RoboND Catking Workspace
+# RoboND Catkin Workspace
 
 Step into the ROS Kinetic Docker container by running
 
