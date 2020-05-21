@@ -57,7 +57,7 @@ If we run `ls -l` again we will find, that the following directories exist:
 
 ## Simple Arm
 
-![The Simple Arm simulation environment](src/simple_arm/images/simulation.png)
+![The Simple Arm simulation environment](.readme/simple_arm.jpg)
 
 Ensure that all packages are installed as required:
 
