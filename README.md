@@ -111,4 +111,4 @@ use the following command to pinpoint its location:
 ./src/simple_arm/urdf/simple_arm.gazebo.xacro
 ```
 
-See the [`src/simple_arm/README.md`](src/simple_arm/README.md) for more information.
+See the `src/simple_arm/README.md` for more information.
