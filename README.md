@@ -6,11 +6,13 @@ Step into the ROS Kinetic Docker container by running
 ./run-nvidia.sh
 ```
 
-Note that `run-nvidia.sh` makes use of the `sunside/ros-gazebo-gpu:udacity-robond`
-Docker image, because the original `desktop-full` ROS installation doesn't contain some
+Note that `run-nvidia.sh` makes use of the [`sunside/ros-gazebo-gpu:udacity-robond`](https://hub.docker.com/repository/docker/sunside/ros-gazebo-gpu)
+Docker image, because the original `desktop-full` ROS installation (via the [base image](https://github.com/sunsided/ros-gazebo-gpu-docker)) doesn't contain some
 required packages, such as
 
-- `controller_manager`
+- `ros-kinetic-gazebo-ros-control`,
+- `ros-kinetic-effort-controllers`,
+- `ros-kinetic-joint-state-controller` etc.
 
 You can either have the required image pulled automatically, or build it yourself from
 the provided [Dockerfile](Dockerfile) by running
