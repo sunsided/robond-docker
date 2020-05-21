@@ -33,6 +33,7 @@ docker run --rm -it \
     --name "$CONTAINER_NAME" \
     --gpus "$GPUS" \
     --publish 127.0.0.1:2222:22 \
+    --publish 127.0.0.1:11311:11311 \
     --cap-add sys_ptrace \
     --env="DISPLAY" \
     --env="QT_X11_NO_MITSHM=1" \
