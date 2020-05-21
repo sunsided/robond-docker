@@ -2,7 +2,7 @@
 set -euo pipefail
 
 CONTAINER_NAME=robond
-DOCKER_IMAGE=sunside/ros-gazebo-gpu:kinetic-nvidia
+DOCKER_IMAGE=sunside/ros-gazebo-gpu:udacity-robond
 WORKSPACE=$(pwd)
 
 # Which GPUs to use; see https://github.com/NVIDIA/nvidia-docker

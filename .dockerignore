@@ -1,2 +1,11 @@
-.tmp/
+.*/
+
+src/
+devel/
+build/
+
+.*
+*.md
+*.sh
+
 run-nvidia.sh
