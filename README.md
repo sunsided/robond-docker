@@ -31,6 +31,41 @@ the provided [Dockerfile](Dockerfile) by running
 docker build --no-cache -t sunside/ros-gazebo-gpu:udacity-robond -f Dockerfile .
 ```
 
+## Dockerized building in CLion
+
+To get a dockerized build going in CLion we have to apply some rocket science … sauce.
+
+- First, we need to install the `Docker` plugin and configure it to talk to the local Docker daemon; after that, also _connect_ to the Docker daemon in the `Services` toolbar.
+- Next, we need to run an SSH server within the Docker container … yes, I know … and expose its port to the host. This is explained in [Docker Plugin Integration](https://www.jetbrains.com/help/clion/docker.html) and [Using Docker with CLion](https://blog.jetbrains.com/clion/2020/01/using-docker-with-clion/); see the provided [Dockerfile](Dockerfile) for how it actually plays out.
+- We then create a Remote Host Toolchain that connects to the dockerized SSH server (as described in the above links).
+  ![](.readme/docker.png)
+- Now, we change the default CMake Configuration to apply some ROS specifics as hinted at in [ROS Setup Tutorial](https://www.jetbrains.com/help/clion/ros-setup-tutorial.html).
+  ![](.readme/cmake.png)
+
+Since we cannot just start CLion from the Catkin environment as described in the CLion documentation, we have to
+configure some CMake and environment variables manually. However, configuring the **Generation path** was not required,
+since we cannot point it to Catkins `build` dir without breaking things in various fantastic ways.
+
+Anyway, here's what I added:
+
+- **CMake options:**
+  - `-DCATKIN_DEVEL_PREFIX:PATH=/workspace/devel`
+  - `-DCMAKE_PREFIX_PATH=/workspace/devel;/opt/ros/kinetic;/opt/ros/kinetic/share`
+- **Environment:**
+  - `ROS_VERSION=1`
+  - `ROS_DISTRO=kinetic`
+  - `ROS_MASTER_URI=http://localhost:11311`
+  - `ROS_ROOT=/opt/ros/kinetic/share/ros`
+  - `ROS_ETC_DIR=/opt/ros/kinetic/etc/ros`
+  - `ROS_PACKAGE_PATH=/workspace/src:/opt/ros/kinetic/share`
+  - `ROS_PYTHON_VERSION=2`
+  - `ROSLISP_PACKAGE_DIRECTORIES=/workspace/devel/share/common-lisp`
+  - `PYTHONPATH=/opt/ros/kinetic/lib/python2.7/dist-packages`
+  - `LD_LIBRARY_PATH=/workspace/devel/lib:/opt/ros/kinetic/lib:/opt/ros/kinetic/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH`
+
+The above variables were taken from the container by running `env | grep -i ros` and `env | grep -i kinetic`.
+When CLion is done trying to understand the environment, we can actually build the project(s) and introspect all referenced headers.
+
 ## Setting up a Catkin workspace (once)
 
 Ensure the `src` directory exists, then `cd` into it and call `catkin_init_workspace`

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData">
+    <serverData>
+      <paths name="Docker Container (2a9045cc-3bb5-4d15-ac0b-46d6f98d6986)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/tmp.5f80OBqp9g" local="$PROJECT_DIR$/src/simple_arm" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="/workspace/build" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
