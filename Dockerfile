@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     ros-kinetic-gazebo-ros-control \
     ros-kinetic-effort-controllers \
     ros-kinetic-joint-state-controller \
+    gdb \
  && rm -rf /var/lib/apt/lists/*
 
 # Allow SSH login into the container.
